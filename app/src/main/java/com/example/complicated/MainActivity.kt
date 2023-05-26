@@ -1,7 +1,6 @@
 package com.example.complicated
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.commit
@@ -13,13 +12,12 @@ import com.example.complicated.ui.fragments.CondoErrorFragment
 import com.example.complicated.ui.fragments.CondoListFragment
 import com.example.complicated.ui.fragments.CondoLoadingFragment
 import com.google.android.material.textfield.TextInputEditText
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val searchViewModel: SearchViewModel by viewModels()
+    private val searchViewModel: SearchViewModel by viewModel()
 
     private val condoListFragment = CondoListFragment()
     private val condoErrorFragment = CondoErrorFragment()

@@ -1,8 +1,6 @@
 plugins {
     id ("com.android.application")
     id ("org.jetbrains.kotlin.android")
-    kotlin("kapt")
-    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -40,10 +38,6 @@ android {
     }
 }
 
-kapt {
-    correctErrorTypes = true
-}
-
 dependencies {
 
     val coroutineLifecycleVersion = "2.6.1"
@@ -67,8 +61,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
 
-    val hiltVersion = "2.44"
-    implementation("com.google.dagger:hilt-android:$hiltVersion")
-    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
-
+    val koinVersion = "3.4.0"
+    implementation ("io.insert-koin:koin-android:$koinVersion")
+    testImplementation ("io.insert-koin:koin-test-junit4:$koinVersion")
 }

@@ -4,45 +4,23 @@ import com.example.complicated.data.CondoNameFilter
 import com.example.complicated.data.CondoUnitFilter
 import com.example.complicated.data.avril.AvrilDataSource
 import com.example.complicated.data.avril.AvrilLavigneIncredibleDataSource
-import com.example.complicated.data.avril.AvrilService
 import com.example.complicated.domain.FilterAvrilSongsUseCase
 import com.example.complicated.domain.GetAvrilSongsUseCase
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
+import com.example.complicated.ui.SearchViewModel
+import org.koin.dsl.module
 
-@Module(includes = [SearchBindModule::class])
-@InstallIn(ViewModelComponent::class)
-object SearchModule {
+val searchModule = module {
+    factory<AvrilDataSource> { AvrilLavigneIncredibleDataSource(get()) }
 
-    @Provides
-    fun providesAvrilLavigneIncredibleDataSource(
-        avrilService: AvrilService
-    ): AvrilLavigneIncredibleDataSource {
-        return AvrilLavigneIncredibleDataSource(avrilService)
-    }
+    factory { GetAvrilSongsUseCase(get()) }
 
-    @Provides
-    fun providesGetAvrilSongsUseCase(
-        avrilDataSource: AvrilDataSource
-    ): GetAvrilSongsUseCase {
-        return GetAvrilSongsUseCase(avrilDataSource)
-    }
+    factory { FilterAvrilSongsUseCase(get(), get()) }
 
-    @Provides
-    fun providesFilterSongsUseCase(
-        avrilDataSource: AvrilDataSource,
-        condoUnitFilter: CondoUnitFilter
-    ): FilterAvrilSongsUseCase {
-        return FilterAvrilSongsUseCase(
-            avrilDataSource = avrilDataSource,
-            condoUnitFilter = condoUnitFilter
-        )
-    }
+    factory<CondoUnitFilter> { CondoNameFilter() }
 
-    @Provides
-    fun providesCondoNameFilter(): CondoNameFilter {
-        return CondoNameFilter()
-    }
+    factory { SearchViewModel(
+        getAvrilSongsUseCase = get(),
+        filterAvrilSongsUseCase = get(),
+        dispatcher = get()
+    ) }
 }

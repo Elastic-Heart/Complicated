@@ -6,7 +6,6 @@ import com.example.complicated.common.CoroutineDispatchers
 import com.example.complicated.domain.AvrilSongsState
 import com.example.complicated.domain.FilterAvrilSongsUseCase
 import com.example.complicated.domain.GetAvrilSongsUseCase
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,16 +15,14 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class SearchViewModel @Inject constructor(
+class SearchViewModel constructor(
     private val getAvrilSongsUseCase: GetAvrilSongsUseCase,
     private val filterAvrilSongsUseCase: FilterAvrilSongsUseCase,
     private val dispatcher: CoroutineDispatchers,
 ) : ViewModel() {
 
-    private val debounceDelay = 500L //Should inject this for easier testing?
+    private val debounceDelay = 500L
 
     private val _state = MutableStateFlow<AvrilSongsState>(AvrilSongsState.Loading)
 
