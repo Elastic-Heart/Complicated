@@ -1,5 +1,6 @@
 package com.example.complicated.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -9,12 +10,15 @@ import com.example.complicated.R
 import com.example.complicated.data.CondoUnit
 import com.example.complicated.ui.CondoAdapter
 import com.example.complicated.ui.MarginItemSeparator
+import com.martini.complicated.details.DetailsActivity
 import okhttp3.internal.notify
 
 class CondoListFragment : Fragment(R.layout.condo_list_recycler) {
     private var condoRecyclerView: RecyclerView? = null
 
-    private val condoAdapter = CondoAdapter()
+    private val condoAdapter = CondoAdapter(
+        onItemClicked = ::onItemClicked
+    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,5 +37,12 @@ class CondoListFragment : Fragment(R.layout.condo_list_recycler) {
     fun setData(condos: List<CondoUnit>) {
         condoAdapter.condos = condos
         condoAdapter.notifyDataSetChanged()
+    }
+
+    private fun onItemClicked(id: Long) {
+        Intent(activity, DetailsActivity::class.java).also {
+            it.putExtra(DetailsActivity.songId, id)
+            startActivity(it)
+        }
     }
 }

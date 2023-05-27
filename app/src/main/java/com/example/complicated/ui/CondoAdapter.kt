@@ -10,7 +10,9 @@ import coil.load
 import com.example.complicated.R
 import com.example.complicated.data.CondoUnit
 
-class CondoAdapter : RecyclerView.Adapter<CondoAdapter.CondoViewHolder>() {
+    class CondoAdapter(
+        private val onItemClicked: (Long) -> Unit
+) : RecyclerView.Adapter<CondoAdapter.CondoViewHolder>() {
 
     var condos = listOf<CondoUnit>()
 
@@ -36,5 +38,8 @@ class CondoAdapter : RecyclerView.Adapter<CondoAdapter.CondoViewHolder>() {
     override fun onBindViewHolder(holder: CondoViewHolder, position: Int) {
         val condo = condos[position]
         holder(condo)
+        holder.itemView.setOnClickListener {
+            onItemClicked(condo.id)
+        }
     }
 }

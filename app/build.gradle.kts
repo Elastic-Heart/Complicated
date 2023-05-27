@@ -40,6 +40,9 @@ android {
 
 dependencies {
 
+    implementation(project(":core:data"))
+    implementation(project(":details"))
+
     val coroutineLifecycleVersion = "2.6.1"
 
     implementation ("androidx.core:core-ktx:1.8.0")
