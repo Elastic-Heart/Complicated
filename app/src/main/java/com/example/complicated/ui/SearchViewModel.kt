@@ -2,10 +2,10 @@ package com.example.complicated.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.complicated.common.CoroutineDispatchers
 import com.example.complicated.domain.AvrilSongsState
 import com.example.complicated.domain.FilterAvrilSongsUseCase
 import com.example.complicated.domain.GetAvrilSongsUseCase
+import com.martini.complicated.mylibrary.CoroutineDispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow

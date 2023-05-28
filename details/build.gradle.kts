@@ -52,6 +52,7 @@ android {
 dependencies {
 
     implementation(project(":core:data"))
+    implementation(project(":core:common"))
 
     implementation("androidx.core:core-ktx:1.8.0")
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))

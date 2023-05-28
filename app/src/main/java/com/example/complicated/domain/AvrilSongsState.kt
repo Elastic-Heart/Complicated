@@ -2,10 +2,10 @@ package com.example.complicated.domain
 
 import com.example.complicated.data.CondoUnit
 
-sealed class AvrilSongsState {
+sealed interface AvrilSongsState {
     class Loaded(
         val condos: List<CondoUnit>
-    ) : AvrilSongsState()
-    object Loading: AvrilSongsState()
-    object Failure: AvrilSongsState()
+    ) : AvrilSongsState
+    object Loading: AvrilSongsState
+    object Failure: AvrilSongsState
 }

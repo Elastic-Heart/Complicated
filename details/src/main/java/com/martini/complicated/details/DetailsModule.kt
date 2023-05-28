@@ -10,6 +10,7 @@ val detailsModule = module {
 
     factory { GetSongDetailsViewModel(
         getSongDetailsUseCase = get(),
-        savedStateHandle = get()
+        savedStateHandle = get(),
+        dispatchers = get()
     ) }
 }

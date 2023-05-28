@@ -42,6 +42,7 @@ dependencies {
 
     implementation(project(":core:data"))
     implementation(project(":details"))
+    implementation(project(":core:common"))
 
     val coroutineLifecycleVersion = "2.6.1"
 

@@ -1,4 +1,4 @@
-package com.example.complicated.common
+package com.martini.complicated.mylibrary
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

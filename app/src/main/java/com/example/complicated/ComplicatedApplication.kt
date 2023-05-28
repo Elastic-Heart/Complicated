@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.complicated.di.appModule
 import com.example.complicated.di.searchModule
 import com.martini.complicated.details.detailsModule
+import com.martini.complicated.mylibrary.commonModule
 import com.martini.data.songDetailModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -20,7 +21,8 @@ class ComplicatedApplication : Application() {
                 appModule,
                 searchModule,
                 songDetailModule,
-                detailsModule
+                detailsModule,
+                commonModule
             )
         }
     }

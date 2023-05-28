@@ -1,12 +1,12 @@
 package com.martini.complicated.details
 
 
-sealed class GetSongDetailsState {
-    object Failure: GetSongDetailsState()
+sealed interface GetSongDetailsState {
+    object Failure: GetSongDetailsState
 
-    object Loading: GetSongDetailsState()
+    object Loading: GetSongDetailsState
 
     class Loaded(
         val songDetail: SongDetails
-    ) : GetSongDetailsState()
+    ) : GetSongDetailsState
 }

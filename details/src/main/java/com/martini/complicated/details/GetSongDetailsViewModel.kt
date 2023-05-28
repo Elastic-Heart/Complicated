@@ -5,13 +5,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
+import com.martini.complicated.mylibrary.CoroutineDispatchers
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 class GetSongDetailsViewModel(
     private val getSongDetailsUseCase: GetSongDetailsUseCase,
+    private val dispatchers: CoroutineDispatchers,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -23,7 +24,7 @@ class GetSongDetailsViewModel(
         val id: Long? = savedStateHandle[DetailsActivity.songId]
         id?.let { songId ->
             getSongDetailsUseCase(songId)
-                .flowOn(Dispatchers.IO)
+                .flowOn(dispatchers.io)
                 .onEach { _state.value = it }
                 .launchIn(viewModelScope)
         } ?: run {

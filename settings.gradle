@@ -16,3 +16,4 @@ rootProject.name = "Complicated"
 include ':app'
 include ':core:data'
 include ':details'
+include ':core:common'

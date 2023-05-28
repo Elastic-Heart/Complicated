@@ -1,7 +1,5 @@
 package com.example.complicated.di
 
-import com.example.complicated.common.AppCoroutineDispatchers
-import com.example.complicated.common.CoroutineDispatchers
 import com.example.complicated.data.avril.AvrilService
 import com.example.complicated.data.avril.CacheInterceptor
 import okhttp3.Cache
@@ -44,6 +42,4 @@ val appModule = module {
         val retrofit: Retrofit = get()
         retrofit.create(AvrilService::class.java)
     }
-
-    factory<CoroutineDispatchers> { AppCoroutineDispatchers() }
 }
