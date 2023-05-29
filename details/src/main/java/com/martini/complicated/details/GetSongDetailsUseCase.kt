@@ -18,7 +18,8 @@ class GetSongDetailsUseCase(
                     id = details.id,
                     name = details.name,
                     description = details.description,
-                    imageURL = details.imageURL
+                    imageURL = details.imageURL,
+                    residents = details.residents
                 )
             )
         )

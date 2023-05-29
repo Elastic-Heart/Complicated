@@ -4,5 +4,6 @@ data class SongDetail(
     val id: Long,
     val name: String,
     val description: String,
-    val imageURL: String
+    val imageURL: String,
+    val residents: List<Resident>
 )

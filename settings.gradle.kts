@@ -13,7 +13,9 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Complicated"
-include ':app'
-include ':core:data'
-include ':details'
-include ':core:common'
+include(
+        ":app",
+        ":core:data",
+        ":core:common",
+        ":details"
+)
